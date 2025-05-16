@@ -98,7 +98,7 @@ public class User {
     */
     @Override
     public String toString(){
-        return "User's name: "+name +" age: "+age + " experience: "+experience;
+        return "User's name: "+ name +" age: "+ age + " experience: "+ experience;
     }
 
 }

@@ -61,7 +61,12 @@ public class Teacher extends User {
     public void setClassCode(String classCode){
         this.classCode = classCode;
     }
+    
     @Override
+    /**
+     * Displays the user's information in a nice format
+     * @return returns the string of the formatted attributes of given object
+     */
     public String toString(){
         return super.toString() + "\nTeacher ID: " + teacherID + "\nClass Code: " + classCode;
     }
