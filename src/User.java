@@ -35,7 +35,7 @@ public class User {
     */
     public User(){
         name = "Jane Doe";
-        age=0;
+        age = 0;
         experience = "beginner";
         numOfUsers++;
     }
@@ -98,7 +98,7 @@ public class User {
     */
     @Override
     public String toString(){
-        return "User's name: "+ name +" age: "+ age + " experience: "+ experience;
+        return "User's name: "+ name +"\nAge: "+ age + "\nExperience: "+ experience;
     }
 
 }
