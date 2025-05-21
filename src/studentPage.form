@@ -65,11 +65,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="FAKE"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fakeButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="realButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="REAL"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="realButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="comment">
       <Properties>
@@ -79,7 +85,7 @@
     <Component class="javax.swing.JLabel" name="headline">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="jLabel1"/>
+        <Property name="text" type="java.lang.String" value="City Implements Fine for Walking Too Slowly on Busy Sidewalks"/>
       </Properties>
     </Component>
   </SubComponents>

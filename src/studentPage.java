@@ -7,13 +7,62 @@
  *
  * @author 342354727
  */
-public class studentPage extends javax.swing.JFrame {
 
+//importing packages
+import java.io.IOException;
+import java.io.File;
+import java.util.Scanner;
+
+public class studentPage extends javax.swing.JFrame {
+    private int qNum=1;
+    public static int score =0;
+    public static String currentAnswer="";
+    public static String[] headers;
+    public static String[] answers;
+    public static String[] explainations;
+    public static int lines;
+    
     /**
      * Creates new form studentPage
      */
     public studentPage() {
         initComponents();
+        lines =0;
+        try{
+            Scanner lineCounter = new Scanner(new File("Questions.txt"));
+            while (lineCounter.hasNextLine()){
+                lineCounter.nextLine();
+                lines++;
+            }
+            lineCounter.close();
+            //subtracting 1 from the number of lines
+            lines-=1;
+            //creating my array of healines, answers, and explainations and setting it to the number of lines 
+            headers = new String [lines];
+            answers = new String[lines];
+            explainations = new String[lines];
+            
+            //adding all of the data to the arrays
+            Scanner input = new Scanner(new File("Questions.txt"));
+            //skipping the first line
+            input.nextLine();
+            for (int i =0; i<lines; i++){
+                String currentLine = input.nextLine();
+                //spliting the lines into the different parts of the question
+                String data[] = currentLine.split(";");
+                //storing each data piece in respective array
+                headers[i]= data[0];
+                answers[i]= data[1];
+                explainations[i]= data[2];
+            }
+            input.close();
+            
+        } catch(IOException e){
+            System.out.print(e);
+        }
+        //counting the lines in my file of questions
+        
+        
     }
 
     /**
@@ -33,13 +82,23 @@ public class studentPage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         fakeButton.setText("FAKE");
+        fakeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fakeButtonActionPerformed(evt);
+            }
+        });
 
         realButton.setText("REAL");
+        realButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                realButtonActionPerformed(evt);
+            }
+        });
 
         comment.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         headline.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        headline.setText("jLabel1");
+        headline.setText("City Implements Fine for Walking Too Slowly on Busy Sidewalks");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -75,6 +134,41 @@ public class studentPage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void realButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realButtonActionPerformed
+        //setting users answer to real
+        currentAnswer="real";
+        
+        //checking if the user has the correct answer
+        if (qNum==1){
+            if (currentAnswer.equals("false")){
+                score+=1;
+            }
+        } else{
+            if (currentAnswer.equals(answers[qNum-2])){
+                score+=1;
+            }
+        }
+    }//GEN-LAST:event_realButtonActionPerformed
+
+    private void fakeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakeButtonActionPerformed
+        //setting current answer to fake
+        currentAnswer="fake";
+        //checking if the user has the correct answer
+        if (qNum==1){
+            if (currentAnswer.equals("false")){
+                score+=1;
+            }
+        } else{
+            if (currentAnswer.equals(answers[qNum-2])){
+                score+=1;
+            }
+        }
+        
+        if (qNum!=1&&qNum<=lines+1&&qNum!=11){
+                headline.setText(headers[qNum-2]);
+            }
+    }//GEN-LAST:event_fakeButtonActionPerformed
 
     /**
      * @param args the command line arguments
