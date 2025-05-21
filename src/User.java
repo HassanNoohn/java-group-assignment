@@ -12,6 +12,7 @@ public class User {
     private String name;
     private int age;
     private String experience;
+    private String classCode;
     private static int numOfUsers=0;
     
     //making my constructors
@@ -22,10 +23,11 @@ public class User {
     * @param experience Describes users experience in fake news
     *
     */
-    public User(String name, int age, String experience){
+    public User(String name, int age, String experience, String classCode){
         this.name = name;
         this.age = age;
         this.experience = experience;
+        this.classCode = classCode;
         numOfUsers++;
     }
     
@@ -55,12 +57,20 @@ public class User {
     public int getAge(){
         return age;
     }
+    
     /**
     * This method gets the experience level of a user object
     * @return The string of the user's experience level
     */
     public String getExperience(){
         return experience;
+    }
+    /**
+     * Gets class code
+     * @return returns class code
+     */
+    public String getClassCode(){
+        return classCode;
     }
     /**
     * This method gets the total number of user objects
@@ -90,7 +100,13 @@ public class User {
     public void setExperience(String experience){
         this.experience = experience;
     }
-    
+    /**
+     * Updates class code
+     * @param classCode new class code
+     */
+    public void setClassCode(String classCode){
+        this.classCode = classCode;
+    }
     //making my toString method
     /**
     * This method displays information about a given bank account in a nice format
@@ -98,7 +114,7 @@ public class User {
     */
     @Override
     public String toString(){
-        return "User's name: "+ name +"\nAge: "+ age + "\nExperience: "+ experience;
+        return "\nUser's name: "+ name +"\nAge: "+ age + "\nExperience: "+ experience;
     }
 
 }

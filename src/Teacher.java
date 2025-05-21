@@ -9,8 +9,6 @@
  */
 public class Teacher extends User {
     private int teacherID;
-    private String classCode;
-    
     
     /**
      * Constructs a teacher object 
@@ -21,9 +19,8 @@ public class Teacher extends User {
      * @param classCode user's class code
      */
     public Teacher(String name, int age, String experience, int teacherID, String classCode){
-        super(name, age, experience);
+        super(name, age, experience, classCode);
         this.teacherID = teacherID;
-        this.classCode = classCode;
     }
     /**
      * Constructs a default teacher object
@@ -31,7 +28,6 @@ public class Teacher extends User {
     public Teacher(){
         super();
         this.teacherID = -1;
-        this.classCode = "no class";
     }
     /**
      * Gets teacher ID value
@@ -40,26 +36,13 @@ public class Teacher extends User {
     public int getID(){
         return teacherID;
     }
-    /**
-     * Gets class code
-     * @return returns class code
-     */
-    public String getClassCode(){
-        return classCode;
-    }
+
     /**
      * Updates teacher ID value
      * @param teacherID new teacher ID
      */
     public void setTeacherID(int teacherID){
         this.teacherID = teacherID;
-    }
-    /**
-     * Updates class code
-     * @param classCode new class code
-     */
-    public void setClassCode(String classCode){
-        this.classCode = classCode;
     }
     
     @Override
@@ -68,6 +51,6 @@ public class Teacher extends User {
      * @return returns the string of the formatted attributes of given object
      */
     public String toString(){
-        return super.toString() + "\nTeacher ID: " + teacherID + "\nClass Code: " + classCode;
+        return super.toString() + "\nTeacher ID: " + teacherID;
     }
 }

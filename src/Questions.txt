@@ -1,4 +1,4 @@
-title;answer;explaination
+title;answer;explanation
 City Implements Fine for Walking Too Slowly on Busy Sidewalks;fake;Fake! This is an irrational and unimportant law. This heading is trolling, law makers are interested in pedestrian safety, not speed.
 New Study Finds That Chocolate Chip Cookies are a Superfood;fake;Fake! No studies like this have come out and it goes against basic critical thinking, sugar is only good in moderation and definitely not a superfood.
 School Gets Rid of Homework, Saying it is Unnecessary to Student Learning;real;Real! Other studies have previously supported this finding, saying that homework isn't the most effective way of solidifying learning and a source of student stress.

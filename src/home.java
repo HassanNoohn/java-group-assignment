@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class home extends javax.swing.JFrame {
     
     //creating array to store all users
-    public  ArrayList<User> users = new ArrayList<>();
+    public static ArrayList<User> users = new ArrayList<>();
     /**
      * Creates new form home
      */
@@ -51,6 +51,7 @@ public class home extends javax.swing.JFrame {
         jLabel1.setText("Home Page");
 
         teacherbutton.setText("Start teacher lesson");
+        teacherbutton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         teacherbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 teacherbuttonActionPerformed(evt);
@@ -58,16 +59,20 @@ public class home extends javax.swing.JFrame {
         });
 
         studentbutton.setText("Start student quiz");
+        studentbutton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         studentbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 studentbuttonActionPerformed(evt);
             }
         });
 
+        jLabel2.setForeground(new java.awt.Color(0, 0, 153));
         jLabel2.setText("Enter name:  ");
 
+        jLabel3.setForeground(new java.awt.Color(0, 0, 153));
         jLabel3.setText("Enter age: ");
 
+        jLabel4.setForeground(new java.awt.Color(0, 0, 153));
         jLabel4.setText("Select experience level: ");
 
         experienceInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -76,6 +81,7 @@ public class home extends javax.swing.JFrame {
 
         studentIDInput.setText("Enter student ID (if applicable)");
 
+        jLabel5.setForeground(new java.awt.Color(0, 0, 153));
         jLabel5.setText("Enter class code");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -160,12 +166,12 @@ public class home extends javax.swing.JFrame {
         String classCode = classCodeInput.getText();
         
         //creating new teacher object
-        Teacher teacher = new Teacher(name, age, experience, teacherID, classCode);
+        User teacher = new Teacher(name, age, experience, teacherID, classCode);
        
         //adding object to array
         users.add(teacher);
         
-        System.out.println(users.get(0)); //testing to see if input worked
+        System.out.println(users); //testing to see if input worked
         
         //switch frames
         new teacherPage().setVisible(true);
@@ -174,6 +180,22 @@ public class home extends javax.swing.JFrame {
 
     private void studentbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentbuttonActionPerformed
         // TODO add your handling code here:
+        //getting input
+        String name = nameInput.getText();
+        int age = Integer.parseInt(ageInput.getText());
+        String experience = (String) experienceInput.getSelectedItem();
+        int studentID = Integer.parseInt(studentIDInput.getText());
+        String classCode = classCodeInput.getText();
+        
+        //creating new teacher object
+        User student = new Student(name, age, experience, studentID, classCode);
+       
+        //adding object to array
+        users.add(student);
+    
+        
+        System.out.println(users); //testing to see if input worked
+        
         new studentPage().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_studentbuttonActionPerformed
@@ -223,11 +245,6 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField nameInput;
-    private javax.swing.JButton studentButton;
-    private javax.swing.JButton studentButton1;
-    private javax.swing.JButton studentButton2;
-    private javax.swing.JButton studentButton3;
-    private javax.swing.JButton studentButton4;
     private javax.swing.JTextField studentIDInput;
     private javax.swing.JButton studentbutton;
     private javax.swing.JTextField teacherIDInput;

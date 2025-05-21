@@ -22,10 +22,10 @@ public class Student extends User{
     * @param experience Describes users experience in fake news
     * @param result a score of the users result out of 10
     * @param studentID int of student id
-    *
+    * @param classCode string of which classroom the student belongs in
     */
-    public Student(String name, int age, String experience, int result, int studentID){
-        super(name,age,experience);
+    public Student(String name, int age, String experience, int result, String classCode){
+        super(name,age,experience,classCode);
         this.result = result;
         this.studentID = studentID;
     }
@@ -80,6 +80,6 @@ public class Student extends User{
     */
     @Override
     public String toString(){
-        return super.toString()+" result: "+result+" ID: "+studentID;
+        return super.toString()+ "\nResult: "+result+"\nStudent ID: "+studentID;
     }
 }
