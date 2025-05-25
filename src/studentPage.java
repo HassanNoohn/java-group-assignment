@@ -14,19 +14,23 @@ import java.io.File;
 import java.util.Scanner;
 
 public class studentPage extends javax.swing.JFrame {
-    private int qNum=1;
+    
+    private static int qNum=1;
     public static int score =0;
     public static String currentAnswer="";
     public static String[] headers;
     public static String[] answers;
     public static String[] explainations;
     public static int lines;
+    public static Student student;
     
     /**
      * Creates new form studentPage
      */
     public studentPage() {
         initComponents();
+        //creating a new student object using info provided on home page
+        student = (Student) home.user;
         lines =0;
         try{
             Scanner lineCounter = new Scanner(new File("Questions.txt"));
@@ -78,6 +82,8 @@ public class studentPage extends javax.swing.JFrame {
         realButton = new javax.swing.JButton();
         comment = new javax.swing.JLabel();
         headline = new javax.swing.JLabel();
+        explaination = new javax.swing.JLabel();
+        nextButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,6 +106,13 @@ public class studentPage extends javax.swing.JFrame {
         headline.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         headline.setText("City Implements Fine for Walking Too Slowly on Busy Sidewalks");
 
+        nextButton.setText("NEXT");
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -110,9 +123,18 @@ public class studentPage extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(headline, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(comment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(31, 31, 31)
+                                        .addComponent(explaination, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(nextButton)
+                                        .addGap(207, 207, 207)))
+                                .addComponent(comment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 15, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(realButton, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(fakeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -127,8 +149,14 @@ public class studentPage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(realButton, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fakeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comment, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comment, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(explaination, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(nextButton)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -140,15 +168,19 @@ public class studentPage extends javax.swing.JFrame {
         currentAnswer="real";
         
         //checking if the user has the correct answer
-        if (qNum==1){
-            if (currentAnswer.equals("false")){
-                score+=1;
-            }
-        } else{
+        if (qNum!=1){
             if (currentAnswer.equals(answers[qNum-2])){
-                score+=1;
+               score+=1; 
             }
+            explaination.setText("<html>"+explainations[qNum-2]+"</html>");
+        //if first question, automatically wrong and show correct explaination
+        } else{
+            explaination.setText("<html>Fake! This is an irrational and unimportant law. This heading is trolling, law makers are interested in pedestrian safety, not speed.</html>");
         }
+        //incrementing the qnum and moving to the next question
+        System.out.println(qNum+":"+score);
+        
+        
     }//GEN-LAST:event_realButtonActionPerformed
 
     private void fakeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakeButtonActionPerformed
@@ -156,19 +188,38 @@ public class studentPage extends javax.swing.JFrame {
         currentAnswer="fake";
         //checking if the user has the correct answer
         if (qNum==1){
-            if (currentAnswer.equals("false")){
+            if (currentAnswer.equals("fake")){
                 score+=1;
             }
+            explaination.setText("<html>Fake! This is an irrational and unimportant law. This heading is trolling, law makers are interested in pedestrian safety, not speed.</html>");
         } else{
             if (currentAnswer.equals(answers[qNum-2])){
                 score+=1;
             }
+            explaination.setText("<html>"+explainations[qNum-2]+"</html>");
         }
-        
+        //incrementing the qnum and moving to the next question
+        System.out.println(qNum+":"+score);
+    }//GEN-LAST:event_fakeButtonActionPerformed
+
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
+        // TODO add your handling code here:
+        //incrementing the qnum and moving to the next question
+        qNum++;
         if (qNum!=1&&qNum<=lines+1&&qNum!=11){
                 headline.setText(headers[qNum-2]);
-            }
-    }//GEN-LAST:event_fakeButtonActionPerformed
+                explaination.setText("");
+        }
+        //if on last question, save the user's score
+        if(qNum==11){
+           student.setResult(score);
+           //going to results page
+           new resultPage().setVisible(true);
+           this.setVisible(false);
+           System.out.println(student);
+           
+        }
+    }//GEN-LAST:event_nextButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,8 +258,10 @@ public class studentPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel comment;
+    private javax.swing.JLabel explaination;
     private javax.swing.JButton fakeButton;
     private javax.swing.JLabel headline;
+    private javax.swing.JButton nextButton;
     private javax.swing.JButton realButton;
     // End of variables declaration//GEN-END:variables
 }

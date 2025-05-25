@@ -14,6 +14,8 @@ public class home extends javax.swing.JFrame {
     
     //creating array to store all users
     public static ArrayList<User> users = new ArrayList<>();
+    public static User user;
+    
     /**
      * Creates new form home
      */
@@ -166,10 +168,10 @@ public class home extends javax.swing.JFrame {
         String classCode = classCodeInput.getText();
         
         //creating new teacher object
-        User teacher = new Teacher(name, age, experience, teacherID, classCode);
+        user = new Teacher(name, age, experience, teacherID, classCode);
        
         //adding object to array
-        users.add(teacher);
+        users.add(user);
         
         System.out.println(users); //testing to see if input worked
         
@@ -188,10 +190,10 @@ public class home extends javax.swing.JFrame {
         String classCode = classCodeInput.getText();
         
         //creating new teacher object
-        User student = new Student(name, age, experience, studentID, classCode);
+        user = new Student(name, age, experience,0, studentID, classCode);
        
         //adding object to array
-        users.add(student);
+        users.add(user);
     
         
         System.out.println(users); //testing to see if input worked

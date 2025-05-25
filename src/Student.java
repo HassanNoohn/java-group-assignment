@@ -24,7 +24,7 @@ public class Student extends User{
     * @param studentID int of student id
     * @param classCode string of which classroom the student belongs in
     */
-    public Student(String name, int age, String experience, int result, String classCode){
+    public Student(String name, int age, String experience, int result, int studentID, String classCode){
         super(name,age,experience,classCode);
         this.result = result;
         this.studentID = studentID;
