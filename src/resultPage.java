@@ -7,13 +7,91 @@
  *
  * @author 342354727
  */
-public class resultPage extends javax.swing.JFrame {
+//public class resultPage extends javax.swing.JFrame {
 
+//importing required packages
+import java.io.IOException;
+import java.io.FileWriter;
+import java.io.File;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class resultPage extends javax.swing.JFrame {
+    
     /**
      * Creates new form resultPage
      */
+    
+//    public static ArrayList<User> makeClass(){
+//        ArrayList<User> classroom = new ArrayList<>(); // ArrayList of Strings
+//        return classroom;
+//    }
+    
     public resultPage() {
         initComponents();
+
+        //private ArrayList<User> school;
+        //displaying current user's score
+        resultLabel.setText("You scored "+(studentPage.student).getResult()+"/10");
+        
+ 
+        try{
+            //adding the current student to the school record
+            FileWriter writer = new FileWriter("school.txt",true);
+            writer.write("\nstudent;"+studentPage.student.getName()+";"+studentPage.student.getAge()+";"+studentPage.student.getExperience()+";"+studentPage.student.getResult()+";"+studentPage.student.getID()+";"+studentPage.student.getClassCode());
+            writer.close();
+            
+            //making an array of everyone in the school;
+            ArrayList<User> school = new ArrayList<>();
+            Scanner reader = new Scanner(new File("school.txt"));
+            
+            //eating the first line of description
+            reader.nextLine();
+            
+            while (reader.hasNextLine()){
+                String x = reader.nextLine();
+                String data[]= x.split(";");
+                
+                //if teacher, create instance of the teacher class and add to the polymorphic array
+                if(data[0].equals("teacher")){
+                    //parsing age and ID into integers
+                    int age = Integer.parseInt(data[2]);
+                    int ID = Integer.parseInt(data[5]);
+                    
+                    //instantiating a teacher with the given details
+                    Teacher teacher = new Teacher(data[1],age,data[3],ID,data[6]);
+                    //adding the teacher to the school array
+                    school.add(teacher);
+                
+                //if student, create instance of rhe stduent class and add to the polymorphic array
+                } else if(data[0].equals("student")){
+                    //parsing age, id, and result into integers
+                    int age = Integer.parseInt(data[2]);
+                    int result = Integer.parseInt(data[4]);
+                    int ID = Integer.parseInt(data[5]);
+                    
+                    //instantiating a student with the given details 
+                    Student student = new Student(data[1],age,data[3],result,ID,data[6]);
+                    //adding the student to the school array
+                    school.add(student);
+                    
+                }
+                
+            }
+            //closing the scanner
+            reader.close();
+            //TEST
+            System.out.print("School: ");
+            for (int i=0;i<school.size();i++){
+                System.out.println(school.get(i));
+            }
+            System.out.println("Done printing school");
+            
+        } catch(IOException e){
+            System.out.println("Error"+e);
+        }
+        
+        //displaying the user's score in comparison to their classmates
     }
 
     /**
@@ -95,6 +173,7 @@ public class resultPage extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+  
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
