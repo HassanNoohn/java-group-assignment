@@ -9,6 +9,7 @@
  */
 
 //importing packages
+import java.awt.Color;
 import java.io.IOException;
 import java.io.File;
 import java.util.Scanner;
@@ -103,6 +104,7 @@ public class studentPage extends javax.swing.JFrame {
 
         comment.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        headline.setFont(new java.awt.Font("Britannic Bold", 0, 14)); // NOI18N
         headline.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         headline.setText("City Implements Fine for Walking Too Slowly on Busy Sidewalks");
 
@@ -124,20 +126,18 @@ public class studentPage extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(headline, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(31, 31, 31)
-                                        .addComponent(explaination, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(nextButton)
-                                        .addGap(207, 207, 207)))
+                                .addGap(210, 210, 210)
+                                .addComponent(nextButton)
+                                .addGap(207, 207, 207)
                                 .addComponent(comment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(realButton, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(fakeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(explaination, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(realButton, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(fakeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
@@ -171,10 +171,14 @@ public class studentPage extends javax.swing.JFrame {
         if (qNum!=1){
             if (currentAnswer.equals(answers[qNum-2])){
                score+=1; 
+               explaination.setForeground(Color.green);
+            }else{
+               explaination.setForeground(Color.green);
             }
             explaination.setText("<html>"+explainations[qNum-2]+"</html>");
         //if first question, automatically wrong and show correct explaination
         } else{
+            explaination.setForeground(Color.red);
             explaination.setText("<html>Fake! This is an irrational and unimportant law. This heading is trolling, law makers are interested in pedestrian safety, not speed.</html>");
         }
         //incrementing the qnum and moving to the next question
@@ -190,11 +194,17 @@ public class studentPage extends javax.swing.JFrame {
         if (qNum==1){
             if (currentAnswer.equals("fake")){
                 score+=1;
+                explaination.setForeground(Color.green);
+            }else{
+                explaination.setForeground(Color.red);
             }
             explaination.setText("<html>Fake! This is an irrational and unimportant law. This heading is trolling, law makers are interested in pedestrian safety, not speed.</html>");
         } else{
             if (currentAnswer.equals(answers[qNum-2])){
                 score+=1;
+                explaination.setForeground(Color.green);
+            }else{
+                explaination.setForeground(Color.red);
             }
             explaination.setText("<html>"+explainations[qNum-2]+"</html>");
         }
