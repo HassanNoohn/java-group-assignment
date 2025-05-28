@@ -104,7 +104,7 @@ public class studentPage extends javax.swing.JFrame {
 
         comment.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        headline.setFont(new java.awt.Font("Britannic Bold", 0, 14)); // NOI18N
+        headline.setFont(new java.awt.Font("Britannic Bold", 0, 12)); // NOI18N
         headline.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         headline.setText("City Implements Fine for Walking Too Slowly on Busy Sidewalks");
 
@@ -173,7 +173,7 @@ public class studentPage extends javax.swing.JFrame {
                score+=1; 
                explaination.setForeground(Color.green);
             }else{
-               explaination.setForeground(Color.green);
+               explaination.setForeground(Color.red);
             }
             explaination.setText("<html>"+explainations[qNum-2]+"</html>");
         //if first question, automatically wrong and show correct explaination

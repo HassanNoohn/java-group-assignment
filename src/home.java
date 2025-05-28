@@ -21,6 +21,13 @@ public class home extends javax.swing.JFrame {
      */
     public home() {
         initComponents();
+        experienceInput.removeItem("Item 1");
+        experienceInput.removeItem("Item 2");
+        experienceInput.removeItem("Item 3");
+        experienceInput.removeItem("Item 4");
+        experienceInput.addItem("beginner");
+        experienceInput.addItem("intermediate");
+        experienceInput.addItem("proficient");
     }
 
     /**
@@ -39,12 +46,12 @@ public class home extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         nameInput = new javax.swing.JTextField();
-        experienceInput = new javax.swing.JComboBox<>();
         ageInput = new javax.swing.JTextField();
         teacherIDInput = new javax.swing.JTextField();
         studentIDInput = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         classCodeInput = new javax.swing.JTextField();
+        experienceInput = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,14 +84,19 @@ public class home extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 153));
         jLabel4.setText("Select experience level: ");
 
-        experienceInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         teacherIDInput.setText("Enter teacher ID (if applicable)");
 
         studentIDInput.setText("Enter student ID (if applicable)");
 
         jLabel5.setForeground(new java.awt.Color(0, 0, 153));
         jLabel5.setText("Enter class code");
+
+        experienceInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        experienceInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                experienceInputActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,8 +112,9 @@ public class home extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(experienceInput, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(experienceInput, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(6, 6, 6))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(teacherbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
@@ -201,6 +214,10 @@ public class home extends javax.swing.JFrame {
         new studentPage().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_studentbuttonActionPerformed
+
+    private void experienceInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_experienceInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_experienceInputActionPerformed
 
     /**
      * @param args the command line arguments
