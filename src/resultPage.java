@@ -80,12 +80,50 @@ public class resultPage extends javax.swing.JFrame {
             }
             //closing the scanner
             reader.close();
-            //TEST
-            System.out.print("School: ");
-            for (int i=0;i<school.size();i++){
-                System.out.println(school.get(i));
+            
+            //getting all of the students in the user's class and giving a leaderboard of the class
+            String code = studentPage.student.getClassCode();
+            //Teacher teacher;
+            String leaderBoard = "<html>";
+            Teacher teacher = null;
+            ArrayList<Student> students = new ArrayList<>();
+            
+            for(int i=0;i<school.size();i++){
+                //for the class code:
+                if ((school.get(i).getClassCode()).equals(code)){
+                   //find the teacher 
+                    if(school.get(i) instanceof Teacher){
+                        teacher = (Teacher) school.get(i);
+                    } else{
+                        students.add((Student) school.get(i));
+                    }
+                }
             }
-            System.out.println("Done printing school");
+           teacherLabel.setText("You're in "+teacher.getName()+"'s class. Here is how you rank:");
+           
+           //sorting the scores
+           // Outer loop: pass through the score array
+            for (int i = 0; i < students.size(); i++) {
+                 // Inner loop: compare adjacent elements
+                for (int j = 0; j <  students.size() - i-1; j++) {
+                     // if current element greater, swap
+                    if (students.get(j).getResult() > students.get(j+1).getResult()) {
+                        // swap spots numbers
+                        Student temp = students.get(j);
+                        students.set(j,students.get(j+1));
+                        students.set(j+1, temp);
+                    }
+                }
+            }//printing out new scoreboard, using html to allow text wrapping
+         
+        for (int i=students.size() - 1;i>-1;i--){
+            Student student = students.get(i);
+            String name = student.getName();
+            int result = student.getResult();
+            leaderBoard+=name+": "+result+"/10 <br>";
+        }
+        leaderBoard+="</html>";
+        leaderboard.setText(leaderBoard);
             
         } catch(IOException e){
             System.out.println("Error"+e);
@@ -106,39 +144,48 @@ public class resultPage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         resultLabel = new javax.swing.JLabel();
         leaderboard = new javax.swing.JLabel();
+        teacherLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Results");
 
-        resultLabel.setText("jLabel2");
+        resultLabel.setText(" ");
 
-        leaderboard.setText("jLabel2");
+        leaderboard.setText("  ");
+
+        teacherLabel.setText("  ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(227, 227, 227)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(85, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(227, 227, 227)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(resultLabel)
-                            .addComponent(jLabel1)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(leaderboard, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(63, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(resultLabel)
+                        .addGap(121, 121, 121))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(leaderboard, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(teacherLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(78, 78, 78))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jLabel1)
-                .addGap(48, 48, 48)
+                .addGap(18, 18, 18)
                 .addComponent(resultLabel)
-                .addGap(45, 45, 45)
+                .addGap(53, 53, 53)
+                .addComponent(teacherLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(leaderboard, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(60, Short.MAX_VALUE))
         );
@@ -186,5 +233,6 @@ public class resultPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel leaderboard;
     private javax.swing.JLabel resultLabel;
+    private javax.swing.JLabel teacherLabel;
     // End of variables declaration//GEN-END:variables
 }

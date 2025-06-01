@@ -10,6 +10,8 @@
 
 //importing array list
 import java.util.ArrayList;
+import java.io.IOException;
+import java.io.FileWriter;
 public class home extends javax.swing.JFrame {
     
     //creating array to store all users
@@ -169,7 +171,13 @@ public class home extends javax.swing.JFrame {
         
         //creating new teacher object
         user = new Teacher(name, age, experience, teacherID, classCode);
-       
+       try{
+           FileWriter writer = new FileWriter("school.txt",true);
+           writer.write("\nteacher;"+name+";"+age+";"+experience+";N/A"+teacherID+";"+classCode);
+           writer.close();
+       } catch(IOException e){
+           System.out.println("Error"+e);
+       }
         //adding object to array
         users.add(user);
         
