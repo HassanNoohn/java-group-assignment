@@ -73,10 +73,8 @@ public class resultPage extends javax.swing.JFrame {
                     //instantiating a student with the given details 
                     Student student = new Student(data[1],age,data[3],result,ID,data[6]);
                     //adding the student to the school array
-                    school.add(student);
-                    
-                }
-                
+                    school.add(student);                 
+                }  
             }
             //closing the scanner
             reader.close();

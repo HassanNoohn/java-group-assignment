@@ -73,6 +73,14 @@ public class Student extends User{
         studentID=id;
     }
     
+     /**
+     * displays a short fun message
+     */
+    @Override
+    public void introduce(){
+        System.out.println("Hi I'm student " + super.getName() + ", I love learning about tech!");
+    }
+    
     //making my toString method
     /**
     * This method displays information about a given bank account in a nice format

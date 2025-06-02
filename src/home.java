@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.io.IOException;
 import java.io.FileWriter;
 public class home extends javax.swing.JFrame {
+    
+    //creating array to store all users
+    public static ArrayList<User> users = new ArrayList<>();
     public static User user;
     
     
@@ -176,6 +179,9 @@ public class home extends javax.swing.JFrame {
        } catch(IOException e){
            System.out.println("Error"+e);
        }
+        //adding object to array
+        users.add(user);
+        
         //switch frames
         new teacherPage().setVisible(true);
         this.setVisible(false);
@@ -193,7 +199,9 @@ public class home extends javax.swing.JFrame {
         //creating new teacher object
         user = new Student(name, age, experience,0, studentID, classCode);
       
-        //starting the quiz
+        //adding object to array
+        users.add(user);
+        
         new studentPage().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_studentbuttonActionPerformed

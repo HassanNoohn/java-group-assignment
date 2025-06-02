@@ -45,6 +45,15 @@ public class Teacher extends User {
         this.teacherID = teacherID;
     }
     
+     /**
+     * displays a short fun message
+     */
+    @Override
+    public void introduce(){
+        System.out.println("Hi I'm teacher " + super.getName() + ", I'm here to teach about tech!");
+    }
+    
+    
     @Override
     /**
      * Displays the user's information in a nice format

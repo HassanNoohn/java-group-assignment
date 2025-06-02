@@ -99,6 +99,7 @@ public class User {
     */
     public void setExperience(String experience){
         this.experience = experience;
+   
     }
     /**
      * Updates class code
@@ -107,6 +108,14 @@ public class User {
     public void setClassCode(String classCode){
         this.classCode = classCode;
     }
+    
+    /**
+     * displays a short fun message
+     */
+    public void introduce(){
+        System.out.println("Hi my name is " + name + ", I love tech!");
+    }
+    
     //making my toString method
     /**
     * This method displays information about a given bank account in a nice format
