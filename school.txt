@@ -7,3 +7,7 @@ student;Huan;18;beginner;3;9008;EFHG
 student;Zia;17;proficient;10;1010;ABCD
 teacher;Mrs. Smith;35;beginner;N/A;3556;ABCD
 student;Michelle;18;intermediate;8;8000;EFGH
+student;hkuhuk;8709;Item 1;5;65765;EFGH
+student;kbjkb;9878;Item 1;5;8698;WXYZ
+student;noohn;998;Item 1;5;9708;EFGH
+student;hehe;879;Item 1;5;879;ABCD
