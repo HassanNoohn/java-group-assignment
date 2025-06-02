@@ -155,7 +155,7 @@ public class resultPage extends javax.swing.JFrame {
         resultLabel.setText(" ");
 
         leaderboard.setFont(new java.awt.Font("MS UI Gothic", 1, 12)); // NOI18N
-        leaderboard.setText("hello");
+        leaderboard.setText(" ");
 
         teacherLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         teacherLabel.setText(" ");

@@ -181,8 +181,6 @@ public class studentPage extends javax.swing.JFrame {
             explaination.setForeground(Color.red);
             explaination.setText("<html>Fake! This is an irrational and unimportant law. This heading is trolling, law makers are interested in pedestrian safety, not speed.</html>");
         }
-        //incrementing the qnum and moving to the next question
-        System.out.println(qNum+":"+score);
         
         
     }//GEN-LAST:event_realButtonActionPerformed
@@ -208,8 +206,6 @@ public class studentPage extends javax.swing.JFrame {
             }
             explaination.setText("<html>"+explainations[qNum-2]+"</html>");
         }
-        //incrementing the qnum and moving to the next question
-        System.out.println(qNum+":"+score);
     }//GEN-LAST:event_fakeButtonActionPerformed
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
@@ -226,7 +222,6 @@ public class studentPage extends javax.swing.JFrame {
            //going to results page
            new resultPage().setVisible(true);
            this.setVisible(false);
-           System.out.println(student);
            
         }
     }//GEN-LAST:event_nextButtonActionPerformed
