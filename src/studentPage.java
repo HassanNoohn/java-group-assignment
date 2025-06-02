@@ -173,7 +173,7 @@ public class studentPage extends javax.swing.JFrame {
                score+=1; 
                explaination.setForeground(Color.green);
             }else{
-               explaination.setForeground(Color.green);
+               explaination.setForeground(Color.red);
             }
             explaination.setText("<html>"+explainations[qNum-2]+"</html>");
         //if first question, automatically wrong and show correct explaination

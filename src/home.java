@@ -18,6 +18,7 @@ public class home extends javax.swing.JFrame {
     public static ArrayList<User> users = new ArrayList<>();
     public static User user;
     
+    
     /**
      * Creates new form home
      */
@@ -79,7 +80,7 @@ public class home extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 153));
         jLabel4.setText("Select experience level: ");
 
-        experienceInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        experienceInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "beginner", "intermediate", "proficient" }));
 
         teacherIDInput.setText("Enter teacher ID (if applicable)");
 
