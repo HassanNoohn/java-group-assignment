@@ -173,7 +173,7 @@ public class home extends javax.swing.JFrame {
         user = new Teacher(name, age, experience, teacherID, classCode);
        try{
            FileWriter writer = new FileWriter("school.txt",true);
-           writer.write("\nteacher;"+name+";"+age+";"+experience+";N/A"+teacherID+";"+classCode);
+           writer.write("\nteacher;"+name+";"+age+";"+experience+";N/A;"+teacherID+";"+classCode);
            writer.close();
        } catch(IOException e){
            System.out.println("Error"+e);
